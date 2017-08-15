@@ -1,4 +1,28 @@
-<div class="w3-container w3-padding-16 w3-margin w3-cell-row">
+<h2 class="text-xs-center">Blog Post</h2>
+<hr/>
+<div class="row">
+  <div class="col-md-4">
+      <app-imagepost 
+      [image]="model.Image"
+      (imageChange)="Changeimage($event)"></app-imagepost>
+  </div>
+
+  <div class="col-md-8">
+    <form (submit) ="createPost()">
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" name="title" placeholder="Title" [(ngModel)]="model.title">
+      </div>
+      <div class="form-group">
+        <label>Content</label>
+        <textarea type="text" name="content" [(ngModel)]="model.content"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+  </div>
+</div>
+
+<!-- <div class="w3-container w3-padding-16 w3-margin w3-cell-row">
   <h2>Blog Post!!</h2>
 
   <div class="w3-card-4">
@@ -10,20 +34,20 @@
       [image]='model.image'
       (imageChange)="Changeimage($event)"></app-imagepost>
     </div>
-
-    <form (submit)="createPost()" class="w3-container">
-      <p>
+    
+    <form (submit)="createPost()" >
+      <div class="form-group">
         <label>Title</label>
         <input class="w3-input" type="text" name="title" placeholder="Title" [(ngModel)]="model.title"  >
-      </p>
-      <p>
+      </div>
+      <div class="form-group">
         <label>Content</label>
         <textarea class="w3-input" type="text" name="content" [(ngModel)]="model.content" ></textarea>
-      </p>
-      <p>
+      </div>
+      
         <button type="submit" class="w3-btn w3-blue">Create</button>
-      </p>
+      
 
     </form>
   </div>
-</div>
+</div> -->
