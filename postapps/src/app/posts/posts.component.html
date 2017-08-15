@@ -1,0 +1,5 @@
+<app-postsform (formsubmit)="createPosts($event)"></app-postsform>
+<app-postslist 
+[posts]="posts"
+(postDelete)="deletePost($event)"
+></app-postslist>
