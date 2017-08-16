@@ -14,8 +14,6 @@ export class ImagepostComponent implements OnChanges {
   constructor(private renderer: Renderer) { }
 
   ngOnChanges(changes: SimpleChanges){
-    console.log(changes);
-    console.log(this.image)
     if (!changes['image'].currentValue) {
       this.image = "/assets/image/no-image.png";
     }

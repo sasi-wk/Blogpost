@@ -2,23 +2,51 @@
 <hr/>
 <div class="row">
   <div class="col-md-4">
-      <app-imagepost 
-      [image]="model.Image"
-      (imageChange)="Changeimage($event)"></app-imagepost>
+    <app-imagepost [image]="model.Image" (imageChange)="Changeimage($event)"></app-imagepost>
   </div>
 
   <div class="col-md-8">
-    <form (submit) ="createPost()">
+    <form name="postForm" (submit)="createPost()">
       <div class="form-group">
         <label>Title</label>
-        <input type="text" class="form-control" name="title" placeholder="Title" [(ngModel)]="model.title">
+        <!-- <input type="text" class="form-control" name="title" placeholder="Title" [(ngModel)]="model.title" required/> -->
+        <input type="text" class="form-control" id="title" required minlength="5" maxlength="30" [(ngModel)]="model.title" name="title"
+          #title="ngModel">
+        <div *ngIf="title.errors && (title.dirty || title.touched)" class="alert alert-danger">
+          <div [hidden]="!title.errors.required">
+            Book title is required!
+          </div>
+          <div [hidden]="!title.errors.minlength">
+            Title must be at least 5 characters long.
+          </div>
+          <div [hidden]="!title.errors.maxlength">
+            Title cannot be more than 30 characters long.
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Content</label>
-        <textarea type="text" class="form-control" name="content" [(ngModel)]="model.content"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary btn-md ">Create</button>
-      </form>
-  </div>
-</div>
 
+
+
+  <div class="form-group">
+    <label>Content</label>
+    <textarea type="text" class="form-control" id="content"  required minlength="5" maxlength="30" [(ngModel)]="model.content" name="content" #content="ngModel"></textarea>
+    <div *ngIf="content.errors && (content.dirty || content.touched)" class="alert alert-danger">
+      <div [hidden]="!content.errors.required">
+        content is required!
+      </div>
+      <div [hidden]="!content.errors.minlength">
+        content must be at least 5 characters long.
+      </div>
+      <div [hidden]="!content.errors.maxlength">
+        content cannot be more than 30 characters long.
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-md ">Create</button>
+  </form>
+
+
+
+
+</div>
+</div>
