@@ -6,7 +6,7 @@
   </div>
 
   <div class="col-md-8">
-    <form name="postForm" (submit)="createPost()">
+    <form name="postForm" (submit)="createPost()" #postForm="ngForm">
       <div class="form-group">
         <label>Title</label>
         <!-- <input type="text" class="form-control" name="title" placeholder="Title" [(ngModel)]="model.title" required/> -->
@@ -42,7 +42,7 @@
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary btn-md ">Create</button>
+  <button type="submit" class="btn btn-primary btn-md " [disabled]="!postForm.form.valid">Create</button>
   </form>
 
 
